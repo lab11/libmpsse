@@ -1,0 +1,8 @@
+__pycache__/
+_pylibmpsse.so
+autom4te.cache/
+mpsse.pyc
+mpsse_wrap.c
+pylibmpsse.py
+pylibmpsse.pyc
+
