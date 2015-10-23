@@ -41,3 +41,28 @@ flash.Stop()
 flash.Close()
 ```
 
+
+To toggle a GPIO pin:
+
+```python
+import mpsse
+from time import sleep
+
+# Open mpsse in GPIO mode
+io = mpsse.MPSSE(mpsse.GPIO)
+
+print('got device')
+
+# Toggle the first GPIO pin on/off 10 times
+while True:
+	io.PinHigh(mpsse.GPIOL0)
+	print('GPIOL0 State: {}'.format(io.PinState(mpsse.GPIOL0)))
+	sleep(1)
+
+	io.PinLow(mpsse.GPIOL0)
+	print('GPIOL0 State: {}'.format(io.PinState(mpsse.GPIOL0)))
+	sleep(1)
+
+io.Close()
+```
+
