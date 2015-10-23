@@ -1,8 +1,11 @@
 libmpsse
 ========
 
-Open source library for SPI/I2C control via FTDI chips. Supports
-FTDI chips that contain an MPSSE engine, such as the FT-2232H and the FT-232H.
+Libmpsse is a library for interfacing with SPI/I2C devices via FTDI's FT-2232
+family of USB to serial chips. Additionally, it provides control over the
+GPIO pins on the FTDI chips and supports a raw bitbang mode as well. Based
+around the libftdi library, it is written in C and includes a Python wrapper
+courtesy of swig.
 
 Install
 -------
