@@ -15,8 +15,8 @@ unsigned char fast_rw_buf[SPI_RW_SIZE + CMD_SIZE];
 /* Builds a block buffer for the Fast* functions. For internal use only. */
 int fast_build_block_buffer(struct mpsse_context *mpsse, uint8_t cmd, unsigned char *data, int size, int *buf_size)
 {
-       	int i = 0;
- 	uint16_t rsize = 0;
+	int i = 0;
+	uint16_t rsize = 0;
 
 	*buf_size = 0;
 
@@ -205,5 +205,3 @@ int FastTransfer(struct mpsse_context *mpsse, char *wdata, char *rdata, int size
 
 	return MPSSE_FAIL;
 }
-
-

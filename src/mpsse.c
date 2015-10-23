@@ -281,7 +281,7 @@ int SetMode(struct mpsse_context *mpsse, int endianess)
 		mpsse->pstart &= ~CS;
 
 		/* Disable FTDI internal loopback */
-	        SetLoopback(mpsse, 0);
+			SetLoopback(mpsse, 0);
 
 		/* Send ACKs by default */
 		SetAck(mpsse, ACK);
@@ -375,9 +375,9 @@ int SetMode(struct mpsse_context *mpsse, int endianess)
 			mpsse->trish = 0xFF;
 			mpsse->gpioh = 0x00;
 
-	                buf[i++] = SET_BITS_HIGH;
-	                buf[i++] = mpsse->gpioh;
-	                buf[i++] = mpsse->trish;
+					buf[i++] = SET_BITS_HIGH;
+					buf[i++] = mpsse->gpioh;
+					buf[i++] = mpsse->trish;
 
 			retval = raw_write(mpsse, buf, i);
 		}
@@ -457,7 +457,7 @@ const char *ErrorString(struct mpsse_context *mpsse)
 {
 	if(mpsse != NULL)
 	{
-        	return ftdi_get_error_string(&mpsse->ftdi);
+		return ftdi_get_error_string(&mpsse->ftdi);
 	}
 
 	return NULL_CONTEXT_ERROR_MSG;
@@ -649,9 +649,9 @@ int Start(struct mpsse_context *mpsse)
 		 * data to prevent unintenteded clock glitches from the FT2232.
 		 */
 		if(mpsse->mode == SPI3)
-	        {
+		{
 			status |= set_bits_low(mpsse, (mpsse->pstart & ~SK));
-	        }
+		}
 		/*
 		 * Hackish work around to properly support SPI mode 1.
 		 * SPI1 clock idles low, but needs to be set high before sending out
@@ -1156,7 +1156,7 @@ int SetDirection(struct mpsse_context *mpsse, uint8_t direction)
 		if(mpsse->mode == BITBANG)
 		{
 			if(ftdi_set_bitmode(&mpsse->ftdi, direction, BITMODE_BITBANG) == 0)
-                	{
+			{
 				retval = MPSSE_OK;
 			}
 		}
