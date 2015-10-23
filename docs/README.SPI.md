@@ -1,27 +1,30 @@
+MPSSE SPI
+=========
+
 Libmpsse supports configuring FTDI chips to operate as SPI master devices in order to communicate with SPI slave devices.
 
 There are four standard modes that an SPI bus can support (modes 0 and 3 are most common):
 
-	1) Mode 0 (SPI0)
-	2) Mode 1 (SPI1)
-	3) Mode 2 (SPI2)
-	4) Mode 3 (SPI3)
+1. Mode 0 (SPI0)
+2. Mode 1 (SPI1)
+3. Mode 2 (SPI2)
+4. Mode 3 (SPI3)
 
 While libmpsse fully supports SPI modes 0 and 2, due to the limitations of the FTDI chips modes 1 and 3 will only work with
-SPI chips that support on the fly instruction decoding. Certian chips, particularly those that support daisy chaining, will 
+SPI chips that support on the fly instruction decoding. Certian chips, particularly those that support daisy chaining, will
 typically not function properly with libmpsse in SPI modes 1 and 3.
 
 When initializing libmpsse, you must specify:
 
-	1) The SPI mode to use
-	2) The SPI clock frequency
-	3) The data transfer endianess (MSB first or LSB first - MSB is most common)
+1. The SPI mode to use
+2. The SPI clock frequency
+3. The data transfer endianess (MSB first or LSB first - MSB is most common)
 
 After initialization, you can communicate with any connected SPI slave device. A standard SPI transaction involves:
 
-	1) Sending a start condition to indicate the beginning of a transaction
-	2) Reading / writing data to and from the slave device
-	3) Sending a stop condition to indicate the end of a transaction
+1. Sending a start condition to indicate the beginning of a transaction
+2. Reading / writing data to and from the slave device
+3. Sending a stop condition to indicate the end of a transaction
 
 By default, CS idles high; you may specify an idle-low CS state with the SetCSIdle method:
 

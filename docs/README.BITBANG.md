@@ -1,3 +1,6 @@
+MPSSE Bitbang
+=============
+
 Libmpsse supports a raw bitbang mode that provides full control over the eight DBUS pins of each interface
 on the FTDI chip. The DBUS pins are the first eight pins on each FTDI interface.
 

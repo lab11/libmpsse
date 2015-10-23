@@ -1,9 +1,10 @@
-MPSSE FUNCTIONS
+MPSSE C Functions
+=================
 
 
 	struct mpsse_context *MPSSE.Open(int vid, int pid, enum modes mode, int freq, int endianess, int interface, const char *description, const char *serial)
 
-		Opens the device matching the given vendor and product ID, description, or serial number. 
+		Opens the device matching the given vendor and product ID, description, or serial number.
 		This can be used to create an MPSSE context for any supported mode.
 
 		@vid         - Device vendor ID.
@@ -15,13 +16,13 @@ MPSSE FUNCTIONS
 		@description - Device product description (set to NULL if not needed).
 		@serial	     - Serial number of the FTDI (set to NULL if not needed).
 
-		Returns a pointer to an MPSSE context structure. 
+		Returns a pointer to an MPSSE context structure.
 		On success, mpsse->open will be set to 1.
 		On failure, mpsse->open will be set to 0.
 
 
 	void MPSSE.Close(struct mpsse_context *mpsse)
-	 
+
 		Closes the FTDI device and deinitializes libftdi.
 
 		@mpsse - MPSSE context pointer.
@@ -112,6 +113,7 @@ MPSSE FUNCTIONS
 
 
 SPI FUNCTIONS
+-------------
 
 
 	int MPSSE.SPI.Start(struct mpsse_context *mpsse)
@@ -119,7 +121,7 @@ SPI FUNCTIONS
                 Asserts the chip select pin.
 
 		@mpsse - MPSSE context pointer.
-                
+
 		Returns MPSSE_OK on success.
                 Returns MPSSE_FAIL on failure.
 
@@ -170,6 +172,7 @@ SPI FUNCTIONS
 
 
 I2C FUNCTIONS
+-------------
 
 
 	int MPSSE.I2C.GetAck(struct mpsse_context *mpsse)
@@ -194,11 +197,11 @@ I2C FUNCTIONS
 
 
 	void MPSSE.I2C.SendAcks(struct mpsse_context *mpsse)
-	
+
 		Causes libmpsse to send ACKs after each read byte in I2C mode.
 
 		@mpsse - MPSSE context pointer.
-		
+
 		Returns void.
 
 
@@ -211,7 +214,7 @@ I2C FUNCTIONS
 		Returns void.
 
 
-	
+
 
 	void SetCSIdle(struct mpsse_context *mpsse, int idle)
 
@@ -227,7 +230,7 @@ I2C FUNCTIONS
 
 		Set the specified GPIO pin high (1).
 		Note that the state of the GPOL pins can only be changed prior to a Start()
-		or after a Stop() condition is sent. 
+		or after a Stop() condition is sent.
 
 		@mpsse - MPSSE context pointer.
 		@pin   - Pin number, one of: 0 - 11.
@@ -240,7 +243,7 @@ I2C FUNCTIONS
 
 		Set the specified GPIO pin low (0).
 		Note that the state of GPIO pins 0-3 can only be changed prior to a Start()
-		or after a Stop() condition is sent. 
+		or after a Stop() condition is sent.
 
 		@mpsse - MPSSE context pointer.
 		@pin   - Pin number, one of: 0 - 11.
@@ -266,65 +269,66 @@ I2C FUNCTIONS
 		@pin   - The pin number.
 		@state - The state of the pins, as returned by ReadPins.
 		         If set to -1, ReadPins will automatically be called.
-		
+
 		Returns a 1 if the pin is high, 0 if the pin is low.
 
 
 
 
 DEFINITIONS
+-------------
 
 
-	Interface definitions, used for the 'interface' argument to Open():
+Interface definitions, used for the 'interface' argument to Open():
 
-	        IFACE_ANY       = INTERFACE_ANY,
-	        IFACE_A         = INTERFACE_A,
-	        IFACE_B         = INTERFACE_B,
-	        IFACE_C         = INTERFACE_C,
-	        IFACE_D         = INTERFACE_D
-
-
-	Clock rate definitions, provided for convenience, used for the 'frequency' argument of MPSSE() and Open():
-
-	        ONE_HUNDRED_KHZ  = 100000,
-	        FOUR_HUNDRED_KHZ = 400000,
-	        ONE_MHZ          = 1000000,
-	        TWO_MHZ          = 2000000,
-	        FIVE_MHZ         = 5000000,
-	        SIX_MHZ          = 6000000,
-	        TEN_MHZ          = 10000000,
-	        TWELVE_MHZ       = 12000000,
-	        THIRTY_MHZ       = 30000000,
+    IFACE_ANY       = INTERFACE_ANY,
+    IFACE_A         = INTERFACE_A,
+    IFACE_B         = INTERFACE_B,
+    IFACE_C         = INTERFACE_C,
+    IFACE_D         = INTERFACE_D
 
 
-	Mode definitions, used for the 'mode' argument of MPSSE() and Open():
+Clock rate definitions, provided for convenience, used for the 'frequency' argument of MPSSE() and Open():
 
-	        SPI0    = 1,
-	        SPI1    = 2,
-	        SPI2    = 3,
-	        SPI3    = 4,
-	        I2C     = 5,
-	        GPIO    = 6
-		BITBANG = 7
+    ONE_HUNDRED_KHZ  = 100000,
+    FOUR_HUNDRED_KHZ = 400000,
+    ONE_MHZ          = 1000000,
+    TWO_MHZ          = 2000000,
+    FIVE_MHZ         = 5000000,
+    SIX_MHZ          = 6000000,
+    TEN_MHZ          = 10000000,
+    TWELVE_MHZ       = 12000000,
+    THIRTY_MHZ       = 30000000,
 
-	GPIO pin definitions:
 
-		GPIOL0 = 0,
-		GPIOL1 = 1,
-		GPIOL2 = 2,
-		GPIOL3 = 3,
-		GPIOH0 = 4,
-		GPIOH1 = 5,
-		GPIOH2 = 6,
-		GPIOH3 = 7,
-		GPIOH4 = 8,
-		GPIOH5 = 9,
-		GPIOH6 = 10,
-		GPIOH7 = 11
+Mode definitions, used for the 'mode' argument of MPSSE() and Open():
 
-	MPSSE return codes; most functions that return an integer value return one of these unless otherwise specified:
+	SPI0    = 1,
+	SPI1    = 2,
+	SPI2    = 3,
+	SPI3    = 4,
+	I2C     = 5,
+	GPIO    = 6
+	BITBANG = 7
 
-		MPSSE_OK   =  0,
-		MPSSE_FAIL = -1
+GPIO pin definitions:
+
+	GPIOL0 = 0,
+	GPIOL1 = 1,
+	GPIOL2 = 2,
+	GPIOL3 = 3,
+	GPIOH0 = 4,
+	GPIOH1 = 5,
+	GPIOH2 = 6,
+	GPIOH3 = 7,
+	GPIOH4 = 8,
+	GPIOH5 = 9,
+	GPIOH6 = 10,
+	GPIOH7 = 11
+
+MPSSE return codes; most functions that return an integer value return one of these unless otherwise specified:
+
+	MPSSE_OK   =  0,
+	MPSSE_FAIL = -1
 
 

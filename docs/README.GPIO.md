@@ -1,3 +1,6 @@
+MPSSE GPIO
+==========
+
 Libmpsse supports toggling the FTDI chip's GPIO pins in SPI, I2C and GPIO modes.
 
 This is done via the PinHigh and PinLow functions, which set the specified pin high or low respectively:
@@ -31,6 +34,6 @@ The following GPIO pins are defined by libmpsse:
 	GPIOH6
 	GPIOH7
 
-It should be noted that when in SPI or I2C modes, the GPIOL pins can only be set before a Start() or after 
+It should be noted that when in SPI or I2C modes, the GPIOL pins can only be set before a Start() or after
 a Stop(); that is, they cannot be set in between calls to the Start() and Stop() functions. The GPIOH pins
 can be set at any time.
